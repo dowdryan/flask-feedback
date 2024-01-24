@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>{{ user.username }}</h3>
+<h4>{{ user.first_name }} {{ user.last_name }} | {{ user.email }}</h4>
+<hr>
+<h4 class="feedback">Feedback:</h4>
+{% for feedback in feedbacks %}
+    <div class="feedback-item">
+        <ul class="feedback-title"><b>{{ feedback.title }}</b> | <a href="{{ url_for('update_feedback', username=user.username, feedback_id=feedback.id) }}">Edit</a> | <a href="{{ url_for('delete_feedback', username=user.username, feedback_id=feedback.id) }}">Remove</a>
+            <ul>
+                <li class="feedback-content"><i>{{ feedback.content }}</i></li>
+            </ul>
+        </ul>
+    </div>
+{% endfor %}
+<hr>
+<form method="GET">
+    <p>Have any feedback? We'd love to hear from you!</p>
+    <button type="button" onclick="window.location.href='{{ url_for('add_feedback', username=user.username) }}'">Add Feedback</button>
+    <br>
+    <br>
+    <button type="button" onclick="window.location.href='{{ url_for('logout') }}'">Logout</button>
+    <br>
+    <button type="button" onclick="window.location.href='{{ url_for('logout') }}'">Remove Account</button>
+</form>
+{% endblock %}

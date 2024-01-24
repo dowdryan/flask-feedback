@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Login</h3>
+<form method="POST">
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+    {% for error in form.password.errors %}
+    <span class="error">{{ error }}</span>
+    <br>
+    {% endfor %}
+    <label for="{{ form.username.id }}">Username:</label>
+    {{ form.username(size=20) }}
+    {% for error in form.username.errors %}
+        <span class="error">{{ error }}</span>
+    {% endfor %}
+    <br>
+    <label for="{{ form.password.id }}">Password:</label>
+    {{ form.password(size=20) }}
+    <br>
+    {{ form.submit }}
+</form>
+<p>Don't have an account? <a href="{{ url_for('register_user') }}">Register Here.</a></p>
+{% endblock %}

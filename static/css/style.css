@@ -1,0 +1,12 @@
+.feedback {
+    margin-top: 5px;
+    font-size: 0.95rem;
+}
+
+.feedback-item {
+    margin-bottom: 10px; /* Adjust this value as needed */
+}
+
+.feedback-title, .feedback-content {
+    margin: 1px 0; /* Adjust these values to control top and bottom margin */
+}
